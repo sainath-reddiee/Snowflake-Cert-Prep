@@ -237,12 +237,15 @@ def render_quiz(exam_code: str, exam_data: dict):
     for domain in exam['domains']:
         all_topics.extend(domain['topics'])
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
         selected_domain = st.selectbox("Select Domain", domain_names, key="quiz_domain")
     with col2:
         domain_topics = next((d['topics'] for d in exam['domains'] if d['name'] == selected_domain), [])
         selected_topic = st.selectbox("Select Topic", ["All Topics"] + domain_topics, key="quiz_topic")
+    with col3:
+        available_models = ["mistral-large", "llama3-70b", "llama3.1-70b", "mistral-7b", "llama3-8b"]
+        selected_model = st.selectbox("Select AI Model", available_models, key="quiz_model")
     
     topic_for_quiz = selected_domain if selected_topic == "All Topics" else selected_topic
     
@@ -257,14 +260,21 @@ def render_quiz(exam_code: str, exam_data: dict):
             st.rerun()
     
     if generate_btn:
-        with st.spinner("Generating quiz questions..."):
+        with st.spinner(f"Generating quiz questions using {selected_model}..."):
             conn_status = check_connection_status()
             if conn_status['configured']:
-                quiz_response = generate_quiz_with_cortex(exam['name'], topic_for_quiz)
+                quiz_response = generate_quiz_with_cortex(exam['name'], topic_for_quiz, model=selected_model)
                 if quiz_response:
                     try:
-                        st.session_state.current_quiz = json.loads(quiz_response)
-                    except json.JSONDecodeError:
+                        parsed = json.loads(quiz_response) if isinstance(quiz_response, str) else quiz_response
+                        if isinstance(parsed, dict) and 'choices' in parsed:
+                            content = parsed['choices'][0]['messages']
+                            st.session_state.current_quiz = json.loads(content) if isinstance(content, str) else content
+                        elif isinstance(parsed, list):
+                            st.session_state.current_quiz = parsed
+                        else:
+                            st.session_state.current_quiz = generate_mock_quiz(exam_code, topic_for_quiz)
+                    except (json.JSONDecodeError, KeyError, IndexError, TypeError):
                         st.session_state.current_quiz = generate_mock_quiz(exam_code, topic_for_quiz)
                 else:
                     st.session_state.current_quiz = generate_mock_quiz(exam_code, topic_for_quiz)
@@ -381,19 +391,22 @@ def render_sql_lab(exam_code: str, exam_data: dict):
             "Snowpark Python UDFs"
         ]
     
-    col1, col2 = st.columns([2, 1])
+    col1, col2, col3 = st.columns([2, 1, 1])
     with col1:
         selected_feature = st.selectbox("Select Feature to Practice", lab_features)
     with col2:
         custom_feature = st.text_input("Or enter custom feature")
+    with col3:
+        available_models = ["mistral-large", "llama3-70b", "llama3.1-70b", "mistral-7b", "llama3-8b"]
+        selected_model = st.selectbox("Select AI Model", available_models, key="lab_model")
     
     feature_to_generate = custom_feature if custom_feature else selected_feature
     
     if st.button("🔧 Generate SQL Lab", type="primary"):
-        with st.spinner("Generating SQL practice scripts..."):
+        with st.spinner(f"Generating SQL practice scripts using {selected_model}..."):
             conn_status = check_connection_status()
             if conn_status['configured']:
-                sql_lab = generate_sql_lab(feature_to_generate)
+                sql_lab = generate_sql_lab(feature_to_generate, model=selected_model)
                 if not sql_lab:
                     sql_lab = generate_mock_sql_lab(feature_to_generate)
             else:
