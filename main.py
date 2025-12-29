@@ -216,7 +216,7 @@ def render_mindmap(exam_code: str, exam_data: dict):
         mermaid_code = mindmaps[selected_domain]
         
         if has_mermaid:
-            st_mermaid(mermaid_code, height=400)
+            st_mermaid(mermaid_code, height="400")
         else:
             st.code(mermaid_code, language="mermaid")
             st.info("Install streamlit-mermaid for interactive diagrams: `pip install streamlit-mermaid`")
