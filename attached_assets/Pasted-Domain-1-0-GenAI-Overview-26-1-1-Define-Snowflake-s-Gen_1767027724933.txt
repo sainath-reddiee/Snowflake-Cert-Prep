@@ -1,0 +1,28 @@
+Domain 1.0: GenAI Overview (26%)
+• 1.1 Define Snowflake's GenAI principle, features, and best practices
+• Snowflake Cortex: LLMs, Cortex Search, Cortex Fine Tuning, Cortex Agent.
+• Snowflake Co-pilot: Usage and capabilities.
+• Security, Privacy, Access & Control: RBAC, Guardrails, Required Privileges, Cortex LLM Functions, Model Allow List.
+• Interfaces: Cortex LLM Playground, AI SQL Functions, REST API.
+• BYOM (Bring Your Own Model): Snowflake Model Registry (Custom Models), Using Snowpark Container Services (SPCS).
+• 1.2 Outline GenAI capabilities in Snowflake
+• Cortex LLM Functions: Vector Embedding, Fine Tuning.
+• Cortex Search: RAG Use Cases, Unstructured data use cases, REST APIs.
+• Cortex Analyst: Semantic Model Generation, Structured/text-to-sql use cases, REST APIs.
+• Cortex Agents & Cross-Region Inferences.
+Domain 2.0: GenAI & LLM Functions (40%)
+• 2.1 Apply GenAI & LLM Functions: Cortex Search, Analyst, Fine Tuning, Agent, Vector Functions, Helper Functions, and Model Selection.
+• 2.2 Data Analysis: Processing Unstructured Data using AI_PARSE_DOCUMENT.
+• 2.3 Chat Interface Development: Environment setup, invoking Cortex functions, Multi-turn architecture, and parameter updates.
+• 2.4 Data Pipelines: Integrating Snowflake Cortex into automated pipelines.
+• 2.5 3rd Party Models: Using Snowpark Container Services (SPCS) and Snowflake Model Registry (Logging and Calling models).
+Domain 3.0: GenAI Governance (22%)
+• 3.1 Model Access Control: Limits on model usage, Data safety/security, and REST API authentication methods.
+• 3.2 Guardrails: Cortex Guard, reducing hallucinations/bias, and handling error conditions.
+• 3.3 Cost Optimization: Monitoring consumption for Cortex Search, Analyst, and LLM functions.
+• 3.4 AI Observability: Evaluation metrics, comparisons, Tracing, Logging, Event tables, and TruLens SDK implementation.
+Domain 4.0: Document AI (12%)
+• 4.1 Setup: Virtual Warehouse/Database/Schema considerations, Roles and Privileges.
+• 4.2 Preparation: Uploading documents, Training models, Format/Size limits, and question optimization.
+• 4.3 Extraction: !PREDICT queries, extraction conditions, and pipeline automation.
+• 4.4 Troubleshooting: Handling query errors, GET_PRESIGNED_URL function, and cost best practices.

@@ -370,14 +370,18 @@ def render_sql_lab(exam_code: str, exam_data: dict):
     
     if exam_code == "GES-C01":
         lab_features = [
-            "Vector Search",
-            "Cortex LLM Functions",
-            "EMBED_TEXT Function",
+            "Cortex LLM Functions (COMPLETE, SUMMARIZE, TRANSLATE)",
+            "Cortex Search Setup",
+            "Cortex Analyst Semantic Model",
+            "Cortex Agent Multi-turn Chat",
+            "Vector Embeddings with EMBED_TEXT",
             "RAG Implementation",
-            "Document Processing",
-            "Sentiment Analysis",
-            "Text Summarization",
-            "Model Fine-tuning"
+            "AI_PARSE_DOCUMENT for Unstructured Data",
+            "Cortex Fine Tuning",
+            "Cortex Guard Implementation",
+            "Document AI Setup and PREDICT Queries",
+            "TruLens Observability Setup",
+            "Model Registry with SPCS"
         ]
     elif exam_code == "DEA-C01":
         lab_features = [
@@ -464,12 +468,16 @@ def render_resources(exam_code: str, exam_data: dict):
             "Know data sharing and marketplace strategies"
         ],
         "GES-C01": [
-            "Master Cortex LLM functions: COMPLETE, SUMMARIZE, TRANSLATE",
-            "Understand vector embeddings and EMBED_TEXT function",
-            "Learn RAG (Retrieval Augmented Generation) architecture",
-            "Practice vector similarity search with VECTOR type",
-            "Study Document AI capabilities and use cases",
-            "Understand security considerations for AI/ML workloads"
+            "Master Cortex LLM functions and model selection (40% of exam)",
+            "Understand Cortex Search for RAG and unstructured data use cases",
+            "Learn Cortex Analyst for semantic models and text-to-SQL",
+            "Study Cortex Agent development and multi-turn chat architecture",
+            "Practice AI_PARSE_DOCUMENT for processing unstructured data",
+            "Understand Cortex Guard for guardrails and reducing hallucinations",
+            "Learn Document AI setup, !PREDICT queries, and pipeline automation",
+            "Study cost optimization for Cortex Search, Analyst, and LLM functions",
+            "Master TruLens SDK for AI observability and evaluation metrics",
+            "Know BYOM options: Model Registry and Snowpark Container Services (SPCS)"
         ]
     }
     

@@ -226,74 +226,92 @@
     "GES-C01": {
       "name": "SnowPro Gen AI Specialty Certification",
       "code": "GES-C01",
-      "description": "Validates expertise in building Generative AI applications using Snowflake Cortex",
+      "description": "Validates expertise in building Generative AI applications using Snowflake Cortex, including LLM functions, Cortex Search, Analyst, and Document AI",
       "domains": [
         {
-          "name": "Snowflake Cortex Overview",
-          "weight": 20,
+          "name": "GenAI Overview",
+          "weight": 26,
           "topics": [
-            "Cortex LLM Functions",
-            "COMPLETE Function",
-            "EXTRACT_ANSWER Function",
-            "SENTIMENT Function",
-            "SUMMARIZE Function",
-            "TRANSLATE Function",
-            "Available Models (Mistral, Llama, etc.)"
+            "Snowflake Cortex: LLMs, Cortex Search, Fine Tuning, Cortex Agent",
+            "Snowflake Co-pilot: Usage and Capabilities",
+            "Security, Privacy & Access Control: RBAC, Guardrails, Required Privileges",
+            "Cortex LLM Functions & Model Allow List",
+            "Interfaces: Cortex LLM Playground, AI SQL Functions, REST API",
+            "BYOM: Snowflake Model Registry, Custom Models",
+            "Snowpark Container Services (SPCS)",
+            "Vector Embedding & Fine Tuning",
+            "Cortex Search: RAG Use Cases, Unstructured Data, REST APIs",
+            "Cortex Analyst: Semantic Model, Text-to-SQL, REST APIs",
+            "Cortex Agents & Cross-Region Inferences"
           ]
         },
         {
-          "name": "Vector Search and Embeddings",
-          "weight": 25,
+          "name": "GenAI & LLM Functions",
+          "weight": 40,
           "topics": [
-            "Vector Data Types",
-            "EMBED_TEXT Function",
-            "Vector Search Service",
-            "Similarity Functions",
-            "Cosine Distance",
-            "RAG Architecture"
+            "Cortex Search Implementation",
+            "Cortex Analyst Setup",
+            "Cortex Fine Tuning",
+            "Cortex Agent Development",
+            "Vector Functions & Embeddings",
+            "Helper Functions & Model Selection",
+            "AI_PARSE_DOCUMENT for Unstructured Data",
+            "Chat Interface Development",
+            "Multi-turn Conversation Architecture",
+            "Parameter Updates & Environment Setup",
+            "Integrating Cortex into Data Pipelines",
+            "3rd Party Models with SPCS",
+            "Snowflake Model Registry: Logging & Calling Models"
           ]
         },
         {
-          "name": "Document AI and Unstructured Data",
-          "weight": 20,
+          "name": "GenAI Governance",
+          "weight": 22,
           "topics": [
-            "Document AI",
-            "Text Extraction",
-            "PDF Processing",
-            "Image Analysis",
-            "Unstructured Data Pipelines"
+            "Model Access Control & Usage Limits",
+            "Data Safety & Security",
+            "REST API Authentication Methods",
+            "Cortex Guard Implementation",
+            "Reducing Hallucinations & Bias",
+            "Error Condition Handling",
+            "Cost Optimization for Cortex Search",
+            "Cost Optimization for Cortex Analyst",
+            "Cost Optimization for LLM Functions",
+            "AI Observability & Evaluation Metrics",
+            "Tracing & Logging",
+            "Event Tables",
+            "TruLens SDK Implementation"
           ]
         },
         {
-          "name": "ML and AI Development",
-          "weight": 20,
+          "name": "Document AI",
+          "weight": 12,
           "topics": [
-            "Snowpark ML",
-            "Model Registry",
-            "Feature Store",
-            "ML Pipelines",
-            "Model Deployment"
-          ]
-        },
-        {
-          "name": "Security and Governance for AI",
-          "weight": 15,
-          "topics": [
-            "AI Data Privacy",
-            "Model Access Control",
-            "Prompt Security",
-            "Output Validation",
-            "Compliance Considerations"
+            "Virtual Warehouse/Database/Schema Setup",
+            "Roles and Privileges for Document AI",
+            "Document Upload & Preparation",
+            "Training Document AI Models",
+            "Format & Size Limits",
+            "Question Optimization",
+            "!PREDICT Queries",
+            "Extraction Conditions",
+            "Pipeline Automation",
+            "Troubleshooting Query Errors",
+            "GET_PRESIGNED_URL Function",
+            "Cost Best Practices"
           ]
         }
       ],
       "resources": [
         {"title": "Snowflake Cortex Overview", "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/overview"},
         {"title": "Cortex LLM Functions", "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/llm-functions"},
-        {"title": "Vector Search", "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/vector-search"},
+        {"title": "Cortex Search", "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-search"},
+        {"title": "Cortex Analyst", "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-analyst"},
+        {"title": "Cortex Fine-tuning", "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-finetuning"},
         {"title": "Document AI", "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/document-ai"},
-        {"title": "Snowpark ML", "url": "https://docs.snowflake.com/en/developer-guide/snowpark-ml/index"},
-        {"title": "Cortex Fine-tuning", "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-finetuning"}
+        {"title": "Cortex Guard", "url": "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-guard"},
+        {"title": "Snowpark Container Services", "url": "https://docs.snowflake.com/en/developer-guide/snowpark-container-services/overview"},
+        {"title": "Model Registry", "url": "https://docs.snowflake.com/en/developer-guide/snowpark-ml/model-registry/overview"}
       ]
     }
   },
@@ -321,11 +339,10 @@
       "Data Sharing and Collaboration": "graph TD\n    A[Data Sharing] --> B[Direct Sharing]\n    A --> C[Data Exchange]\n    A --> D[Marketplace]\n    B --> E[Secure Shares]\n    B --> F[Reader Accounts]\n    C --> G[Private Exchange]\n    C --> H[Cross-Region]\n    D --> I[Listings]\n    D --> J[Monetization]\n    E --> K[Live Data]\n    H --> L[Auto-fulfillment]"
     },
     "GES-C01": {
-      "Snowflake Cortex Overview": "graph TD\n    A[Snowflake Cortex] --> B[LLM Functions]\n    A --> C[ML Functions]\n    A --> D[AI Services]\n    B --> E[COMPLETE]\n    B --> F[SUMMARIZE]\n    B --> G[TRANSLATE]\n    B --> H[EXTRACT_ANSWER]\n    C --> I[SENTIMENT]\n    C --> J[Classification]\n    D --> K[Document AI]\n    D --> L[Vector Search]\n    E --> M[mistral-large]\n    E --> N[llama3-70b]",
-      "Vector Search and Embeddings": "graph TD\n    A[Vector Search] --> B[Embeddings]\n    A --> C[Vector Store]\n    A --> D[Similarity Search]\n    B --> E[EMBED_TEXT]\n    B --> F[Text Models]\n    C --> G[VECTOR Type]\n    C --> H[Vector Index]\n    D --> I[Cosine Distance]\n    D --> J[L2 Distance]\n    H --> K[HNSW Index]\n    I --> L[Top-K Retrieval]",
-      "Document AI and Unstructured Data": "graph TD\n    A[Document AI] --> B[Text Extraction]\n    A --> C[Document Processing]\n    A --> D[Unstructured Pipeline]\n    B --> E[OCR]\n    B --> F[PDF Parsing]\n    C --> G[Entity Extraction]\n    C --> H[Classification]\n    D --> I[Stage Files]\n    D --> J[Directory Tables]\n    G --> K[Named Entities]\n    I --> L[File URLs]",
-      "ML and AI Development": "graph TD\n    A[Snowpark ML] --> B[Model Development]\n    A --> C[Model Registry]\n    A --> D[Feature Engineering]\n    B --> E[Training]\n    B --> F[Inference]\n    C --> G[Model Versioning]\n    C --> H[Model Deployment]\n    D --> I[Feature Store]\n    D --> J[Feature Tables]\n    H --> K[UDF Deployment]\n    I --> L[Feature Pipelines]",
-      "Security and Governance for AI": "graph TD\n    A[AI Governance] --> B[Data Privacy]\n    A --> C[Access Control]\n    A --> D[Compliance]\n    B --> E[PII Handling]\n    B --> F[Data Masking]\n    C --> G[Function Grants]\n    C --> H[Model Access]\n    D --> I[Audit Logging]\n    D --> J[Usage Tracking]\n    F --> K[Prompt Sanitization]\n    I --> L[Cortex Usage]"
+      "GenAI Overview": "graph TD\n    A[Snowflake GenAI] --> B[Cortex Services]\n    A --> C[Interfaces]\n    A --> D[BYOM]\n    B --> E[LLM Functions]\n    B --> F[Cortex Search]\n    B --> G[Cortex Analyst]\n    B --> H[Cortex Agent]\n    C --> I[LLM Playground]\n    C --> J[AI SQL Functions]\n    C --> K[REST API]\n    D --> L[Model Registry]\n    D --> M[SPCS]\n    E --> N[Fine Tuning]\n    F --> O[RAG Use Cases]\n    G --> P[Text-to-SQL]",
+      "GenAI & LLM Functions": "graph TD\n    A[LLM Functions] --> B[Cortex Search]\n    A --> C[Cortex Analyst]\n    A --> D[Cortex Agent]\n    B --> E[Vector Embeddings]\n    B --> F[RAG Architecture]\n    C --> G[Semantic Model]\n    C --> H[Text-to-SQL]\n    D --> I[Multi-turn Chat]\n    D --> J[Tool Calling]\n    A --> K[AI_PARSE_DOCUMENT]\n    A --> L[Fine Tuning]\n    L --> M[Custom Models]\n    K --> N[Unstructured Data]\n    A --> O[Pipeline Integration]\n    O --> P[Data Automation]",
+      "GenAI Governance": "graph TD\n    A[AI Governance] --> B[Access Control]\n    A --> C[Guardrails]\n    A --> D[Cost Management]\n    A --> E[Observability]\n    B --> F[Model Limits]\n    B --> G[REST Auth]\n    C --> H[Cortex Guard]\n    C --> I[Reduce Hallucinations]\n    C --> J[Error Handling]\n    D --> K[Search Costs]\n    D --> L[Analyst Costs]\n    D --> M[LLM Costs]\n    E --> N[Tracing]\n    E --> O[Event Tables]\n    E --> P[TruLens SDK]",
+      "Document AI": "graph TD\n    A[Document AI] --> B[Setup]\n    A --> C[Preparation]\n    A --> D[Extraction]\n    A --> E[Troubleshooting]\n    B --> F[Warehouse Config]\n    B --> G[Roles & Privileges]\n    C --> H[Document Upload]\n    C --> I[Model Training]\n    C --> J[Format Limits]\n    D --> K[PREDICT Queries]\n    D --> L[Pipeline Automation]\n    E --> M[Query Errors]\n    E --> N[GET_PRESIGNED_URL]\n    E --> O[Cost Optimization]"
     }
   }
 }
