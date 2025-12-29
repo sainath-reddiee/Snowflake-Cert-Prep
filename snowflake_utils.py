@@ -4,16 +4,26 @@ Snowflake utility functions for Cortex AI and database connections.
 import os
 import json
 import streamlit as st
+import snowflake.connector
 from typing import Optional, Dict, Any, List
 
 
+@st.cache_resource
 def get_snowflake_connection():
     """
-    Get Snowflake connection using st.connection.
-    Credentials should be stored in .streamlit/secrets.toml or environment variables.
+    Get Snowflake connection using snowflake-connector-python.
+    Credentials are read from environment variables.
     """
     try:
-        conn = st.connection("snowflake")
+        conn = snowflake.connector.connect(
+            account=os.environ.get('SNOWFLAKE_ACCOUNT'),
+            user=os.environ.get('SNOWFLAKE_USER'),
+            password=os.environ.get('SNOWFLAKE_PASSWORD'),
+            warehouse=os.environ.get('SNOWFLAKE_WAREHOUSE'),
+            database=os.environ.get('SNOWFLAKE_DATABASE', 'SNOWFLAKE'),
+            schema=os.environ.get('SNOWFLAKE_SCHEMA', 'PUBLIC'),
+            role=os.environ.get('SNOWFLAKE_ROLE', 'ACCOUNTADMIN')
+        )
         return conn
     except Exception as e:
         st.error(f"Failed to connect to Snowflake: {str(e)}")
@@ -26,7 +36,7 @@ def check_connection_status() -> Dict[str, Any]:
     Returns status dict with connection info.
     """
     required_vars = ['SNOWFLAKE_ACCOUNT', 'SNOWFLAKE_USER', 'SNOWFLAKE_PASSWORD', 
-                     'SNOWFLAKE_WAREHOUSE', 'SNOWFLAKE_DATABASE', 'SNOWFLAKE_SCHEMA']
+                     'SNOWFLAKE_WAREHOUSE']
     
     status = {
         "configured": False,
@@ -35,7 +45,7 @@ def check_connection_status() -> Dict[str, Any]:
     }
     
     for var in required_vars:
-        if not os.environ.get(var) and not hasattr(st, 'secrets'):
+        if not os.environ.get(var):
             status["missing_vars"].append(var)
     
     if not status["missing_vars"]:
@@ -83,6 +93,7 @@ Only return the JSON array, no other text."""
         return None
     
     try:
+        cursor = conn.cursor()
         query = f"""
         SELECT SNOWFLAKE.CORTEX.COMPLETE(
             '{model}',
@@ -93,9 +104,11 @@ Only return the JSON array, no other text."""
             {{}}
         ) as response
         """
-        result = conn.query(query)
-        if result is not None and len(result) > 0:
-            return result.iloc[0]['RESPONSE']
+        cursor.execute(query)
+        result = cursor.fetchone()
+        cursor.close()
+        if result is not None:
+            return result[0]
         return None
     except Exception as e:
         st.error(f"Error generating quiz: {str(e)}")
@@ -129,6 +142,7 @@ Make the scripts copy-pasteable and educational."""
         return None
     
     try:
+        cursor = conn.cursor()
         query = f"""
         SELECT SNOWFLAKE.CORTEX.COMPLETE(
             '{model}',
@@ -139,9 +153,11 @@ Make the scripts copy-pasteable and educational."""
             {{}}
         ) as response
         """
-        result = conn.query(query)
-        if result is not None and len(result) > 0:
-            return result.iloc[0]['RESPONSE']
+        cursor.execute(query)
+        result = cursor.fetchone()
+        cursor.close()
+        if result is not None:
+            return result[0]
         return None
     except Exception as e:
         st.error(f"Error generating SQL lab: {str(e)}")
