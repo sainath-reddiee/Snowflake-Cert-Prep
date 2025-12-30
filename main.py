@@ -130,9 +130,9 @@ def render_sidebar():
     exams = exam_data['exams']
     levels = exam_data.get('certification_levels', {})
     
-    level_icons = {"core": "🎯", "advanced": "🚀", "specialty": "⭐"}
+    level_icons = {"associate": "🎓", "core": "🎯", "advanced": "🚀", "specialty": "⭐"}
     ordered_exams = []
-    for level_key in ["core", "advanced", "specialty"]:
+    for level_key in ["associate", "core", "advanced", "specialty"]:
         if level_key in levels:
             level_info = levels[level_key]
             for exam_code in level_info.get('exams', []):
@@ -199,7 +199,7 @@ def render_roadmap(exam_code: str, exam_data: dict):
     levels = exam_data.get('certification_levels', {})
     
     level_name = ""
-    level_colors = {"core": "#22c55e", "advanced": "#f59e0b", "specialty": "#a855f7"}
+    level_colors = {"associate": "#3b82f6", "core": "#22c55e", "advanced": "#f59e0b", "specialty": "#a855f7"}
     exam_level = exam.get('level', '')
     if exam_level and exam_level in levels:
         level_name = levels[exam_level]['name']
