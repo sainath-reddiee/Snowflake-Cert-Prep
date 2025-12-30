@@ -522,7 +522,7 @@ def main():
                 <span style="font-size: 2rem;">🎓</span>
                 <div>
                     <div style="color: white; font-weight: 700; font-size: 1.1rem;">SnowPro GenAI Practice Exams on Udemy</div>
-                    <div style="color: rgba(255,255,255,0.9); font-size: 0.9rem;">400+ exam-style questions for GES-C01 certification prep</div>
+                    <div style="color: rgba(255,255,255,0.9); font-size: 0.9rem;">600+ exam-style questions for GES-C01 certification prep</div>
                 </div>
             </div>
             <div style="background: white; color: #6366f1; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem;">
