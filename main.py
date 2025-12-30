@@ -506,6 +506,32 @@ def main():
     st.markdown(f'<h1 class="main-header">❄️ Snowflake Certification Prep</h1>', unsafe_allow_html=True)
     st.markdown(f'<p class="sub-header">Prepare for your {exam["name"]} certification</p>', unsafe_allow_html=True)
     
+    st.markdown("""
+    <a href="https://www.udemy.com/course/snowpro-specialty-generative-ai-practice-exams-ges-c01/?couponCode=049E73C6821AB210645B" target="_blank" style="text-decoration: none;">
+        <div style="background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #29b5e8 100%); 
+                    border-radius: 12px; 
+                    padding: 1rem 1.5rem; 
+                    margin-bottom: 1.5rem; 
+                    display: flex; 
+                    align-items: center; 
+                    justify-content: space-between;
+                    box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+                    cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <span style="font-size: 2rem;">🎓</span>
+                <div>
+                    <div style="color: white; font-weight: 700; font-size: 1.1rem;">SnowPro GenAI Practice Exams on Udemy</div>
+                    <div style="color: rgba(255,255,255,0.9); font-size: 0.9rem;">400+ exam-style questions for GES-C01 certification prep</div>
+                </div>
+            </div>
+            <div style="background: white; color: #6366f1; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.9rem;">
+                Enroll Now →
+            </div>
+        </div>
+    </a>
+    """, unsafe_allow_html=True)
+    
     tab_roadmap, tab_mindmap, tab_quiz, tab_lab, tab_resources = st.tabs([
         "🗺️ Roadmap", 
         "🧠 Mind Maps", 
