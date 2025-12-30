@@ -162,6 +162,16 @@ def render_sidebar():
         st.sidebar.warning("⚠️ Demo Mode (No Snowflake)")
         st.sidebar.caption("Configure Snowflake credentials for AI-powered features")
     
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("""
+    <div style="text-align: center; padding: 1rem 0; color: #a3a8b4; font-size: 0.85rem;">
+        <p style="margin-bottom: 0.5rem;">Created by <strong style="color: #29b5e8;">Sainath</strong></p>
+        <a href="https://dataengineerhub.blog/about" target="_blank" style="color: #29b5e8; text-decoration: none;">
+            🌐 dataengineerhub.blog
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
+    
     return selected_exam
 
 

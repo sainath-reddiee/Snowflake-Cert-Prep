@@ -1,0 +1,129 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "Inter",
+      "count": 57
+    },
+    {
+      "family": "-apple-system",
+      "count": 57
+    },
+    {
+      "family": "BlinkMacSystemFont",
+      "count": 57
+    },
+    {
+      "family": "Segoe UI",
+      "count": 57
+    },
+    {
+      "family": "Roboto",
+      "count": 57
+    },
+    {
+      "family": "Oxygen",
+      "count": 57
+    },
+    {
+      "family": "Ubuntu",
+      "count": 57
+    },
+    {
+      "family": "Cantarell",
+      "count": 57
+    },
+    {
+      "family": "sans-serif",
+      "count": 57
+    }
+  ],
+  "colors": {
+    "primary": "#0D1527",
+    "accent": "#020817",
+    "background": "#1A0E1C",
+    "textPrimary": "#020817",
+    "link": "#020817"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Inter",
+      "heading": "Inter"
+    },
+    "fontStacks": {
+      "body": [
+        "Inter",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "sans-serif"
+      ],
+      "heading": [
+        "Inter",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Inter",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "Roboto",
+        "Oxygen",
+        "Ubuntu",
+        "Cantarell",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "60px",
+      "h2": "24px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "8px"
+  },
+  "components": {},
+  "images": {
+    "logo": "File saved at: attached_assets/logo.svg",
+    "favicon": "https://dataengineerhub.blog/logo.png",
+    "ogImage": "https://dataengineerhub.blog/og-image.jpg"
+  },
+  "__framework_hints": [],
+  "__llm_logo_reasoning": {
+    "selectedIndex": 0,
+    "reasoning": "Logo rejected: Red flags detected (small square icon). Strong indicators: header logo linking to homepage, header location, visible, top-left position, highest logo on page, reasonable size, small square icon (likely UI icon, heavy penalty), SVG format. Score: 103 (clear winner by 35 points)",
+    "confidence": 0.9,
+    "rejected": true
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "secondary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "confidence": 0
+  },
+  "confidence": {
+    "buttons": 0,
+    "colors": 0,
+    "overall": 0
+  }
+}
