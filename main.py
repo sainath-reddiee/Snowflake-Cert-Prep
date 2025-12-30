@@ -180,16 +180,6 @@ def render_sidebar():
         st.sidebar.warning("⚠️ Demo Mode (No Snowflake)")
         st.sidebar.caption("Configure Snowflake credentials for AI-powered features")
     
-    st.sidebar.markdown("---")
-    st.sidebar.markdown("""
-    <div style="text-align: center; padding: 1rem 0; color: #a3a8b4; font-size: 0.85rem;">
-        <p style="margin-bottom: 0.5rem;">Created by <strong style="color: #29b5e8;">Sainath</strong></p>
-        <a href="https://dataengineerhub.blog/about" target="_blank" style="color: #29b5e8; text-decoration: none;">
-            🌐 dataengineerhub.blog
-        </a>
-    </div>
-    """, unsafe_allow_html=True)
-    
     return selected_exam
 
 
@@ -589,6 +579,34 @@ def main():
             </div>
         </div>
     </a>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, #1a1f2e 0%, #252b3d 100%); 
+                border-radius: 12px; 
+                padding: 1rem 1.5rem; 
+                margin-bottom: 1.5rem; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center;
+                gap: 2rem;
+                border: 1px solid #29b5e8;
+                box-shadow: 0 2px 10px rgba(41, 181, 232, 0.15);">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="width: 45px; height: 45px; background: linear-gradient(135deg, #29b5e8 0%, #1a73e8 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 1.5rem;">👨‍💻</span>
+            </div>
+            <div>
+                <div style="color: #a3a8b4; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;">Created by</div>
+                <div style="color: white; font-weight: 700; font-size: 1.2rem;">Sainath</div>
+            </div>
+        </div>
+        <div style="height: 40px; width: 1px; background: #333;"></div>
+        <a href="https://dataengineerhub.blog/about" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #29b5e8 0%, #1a73e8 100%); padding: 0.6rem 1.25rem; border-radius: 8px; transition: transform 0.2s ease;">
+            <span style="font-size: 1.1rem;">🌐</span>
+            <span style="color: white; font-weight: 600;">dataengineerhub.blog</span>
+        </a>
+    </div>
     """, unsafe_allow_html=True)
     
     tab_roadmap, tab_mindmap, tab_quiz, tab_lab, tab_resources = st.tabs([
