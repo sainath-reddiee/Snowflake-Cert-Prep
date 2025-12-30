@@ -128,14 +128,32 @@ def render_sidebar():
     
     exam_data = load_exam_data()
     exams = exam_data['exams']
+    levels = exam_data.get('certification_levels', {})
     
-    exam_options = {code: f"{data['name']} ({code})" for code, data in exams.items()}
+    level_icons = {"core": "🎯", "advanced": "🚀", "specialty": "⭐"}
+    ordered_exams = []
+    for level_key in ["core", "advanced", "specialty"]:
+        if level_key in levels:
+            level_info = levels[level_key]
+            for exam_code in level_info.get('exams', []):
+                if exam_code in exams:
+                    exam = exams[exam_code]
+                    icon = level_icons.get(level_key, "📋")
+                    ordered_exams.append((exam_code, f"{icon} {level_info['name']}: {exam['name']}"))
+    
+    if not ordered_exams:
+        ordered_exams = [(code, f"{data['name']} ({code})") for code, data in exams.items()]
+    
+    exam_codes = [e[0] for e in ordered_exams]
+    exam_labels = {e[0]: e[1] for e in ordered_exams}
+    
+    default_index = exam_codes.index("GES-C01") if "GES-C01" in exam_codes else 0
     
     selected_exam = st.sidebar.selectbox(
         "Select Certification Exam",
-        options=list(exam_options.keys()),
-        format_func=lambda x: exam_options[x],
-        index=3
+        options=exam_codes,
+        format_func=lambda x: exam_labels[x],
+        index=default_index
     )
     
     st.sidebar.markdown("---")
@@ -178,9 +196,50 @@ def render_sidebar():
 def render_roadmap(exam_code: str, exam_data: dict):
     """Render the dynamic roadmap for the selected exam."""
     exam = exam_data['exams'][exam_code]
+    levels = exam_data.get('certification_levels', {})
+    
+    level_name = ""
+    level_colors = {"core": "#22c55e", "advanced": "#f59e0b", "specialty": "#a855f7"}
+    exam_level = exam.get('level', '')
+    if exam_level and exam_level in levels:
+        level_name = levels[exam_level]['name']
     
     st.markdown(f"### 🗺️ {exam['name']} Roadmap")
     st.markdown(f"*{exam['description']}*")
+    
+    if 'exam_details' in exam:
+        details = exam['exam_details']
+        level_color = level_colors.get(exam_level, "#29b5e8")
+        st.markdown(f"""
+        <div style="background: linear-gradient(135deg, #1a1f2e 0%, #252b3d 100%); border-radius: 12px; padding: 1rem; margin: 1rem 0; border: 1px solid #333;">
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between;">
+                <div style="text-align: center;">
+                    <div style="color: #a3a8b4; font-size: 0.75rem; text-transform: uppercase;">Level</div>
+                    <div style="color: {level_color}; font-weight: 600;">{level_name}</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: #a3a8b4; font-size: 0.75rem; text-transform: uppercase;">Questions</div>
+                    <div style="color: white; font-weight: 600;">{details.get('questions', 'N/A')}</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: #a3a8b4; font-size: 0.75rem; text-transform: uppercase;">Duration</div>
+                    <div style="color: white; font-weight: 600;">{details.get('duration', 'N/A')}</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: #a3a8b4; font-size: 0.75rem; text-transform: uppercase;">Passing Score</div>
+                    <div style="color: white; font-weight: 600;">{details.get('passing_score', 'N/A')}</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: #a3a8b4; font-size: 0.75rem; text-transform: uppercase;">Cost</div>
+                    <div style="color: #29b5e8; font-weight: 600;">{details.get('cost', 'N/A')}</div>
+                </div>
+            </div>
+            <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid #333;">
+                <span style="color: #a3a8b4; font-size: 0.8rem;"><strong>Prerequisites:</strong> {details.get('prerequisites', 'None')}</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
     st.markdown("---")
     
     cols = st.columns(2)

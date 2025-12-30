@@ -1,79 +1,129 @@
 {
+  "certification_levels": {
+    "core": {
+      "name": "Core",
+      "description": "Foundation-level certification validating core Snowflake knowledge",
+      "exams": ["COF-C02"]
+    },
+    "advanced": {
+      "name": "Advanced",
+      "description": "Role-based certifications requiring 2+ years Snowflake experience",
+      "exams": ["DEA-C01", "ARA-C01", "ADA-C01"]
+    },
+    "specialty": {
+      "name": "Specialty",
+      "description": "Deep expertise in specialized Snowflake features",
+      "exams": ["GES-C01"]
+    }
+  },
   "exams": {
     "COF-C02": {
       "name": "SnowPro Core Certification",
       "code": "COF-C02",
-      "description": "Validates knowledge of Snowflake's core platform features and architecture",
+      "level": "core",
+      "description": "Validates foundational knowledge of Snowflake's cloud data platform, architecture, and core features",
+      "exam_details": {
+        "questions": 100,
+        "duration": "115 minutes",
+        "passing_score": "750/1000",
+        "cost": "$175 USD",
+        "prerequisites": "None"
+      },
       "domains": [
         {
-          "name": "Snowflake Data Cloud Features & Architecture",
-          "weight": 25,
+          "name": "Snowflake AI Data Cloud Features & Architecture",
+          "weight": 28,
           "topics": [
-            "Cloud Architecture",
-            "Virtual Warehouses",
-            "Storage Layer",
-            "Compute Layer",
-            "Cloud Services Layer",
-            "Data Sharing",
-            "Snowflake Editions"
+            "Snowflake Cloud Data Platform overview and editions (Standard, Enterprise, Business Critical)",
+            "Hybrid architecture: Storage Layer, Compute Layer, Cloud Services Layer",
+            "Micro-partitions and columnar storage format",
+            "Cloud provider integration (AWS, Azure, GCP)",
+            "Virtual Warehouses: T-shirt sizing, auto-suspend, auto-resume",
+            "Multi-cluster warehouses and scaling policies",
+            "Query processing and concurrency",
+            "Metadata caching and query result caching",
+            "Credit consumption and billing model",
+            "Snowflake editions comparison and feature availability"
           ]
         },
         {
           "name": "Account Access and Security",
-          "weight": 20,
+          "weight": 18,
           "topics": [
-            "Access Control",
-            "Role-Based Access Control (RBAC)",
-            "Network Security",
-            "Data Encryption",
-            "Authentication Methods",
-            "Multi-Factor Authentication"
+            "Account structure and organization hierarchy",
+            "Role-Based Access Control (RBAC) model",
+            "System-defined roles: ACCOUNTADMIN, SYSADMIN, SECURITYADMIN, USERADMIN, PUBLIC",
+            "Role hierarchy and privilege inheritance",
+            "User authentication: password, MFA, key-pair, OAuth",
+            "Federated authentication and SSO (SAML 2.0)",
+            "Network policies and IP whitelisting",
+            "Data encryption at rest and in transit",
+            "Secure data sharing access controls",
+            "Information Schema vs Account Usage views"
           ]
         },
         {
           "name": "Performance Concepts",
-          "weight": 15,
+          "weight": 13,
           "topics": [
-            "Query Optimization",
-            "Clustering",
-            "Materialized Views",
-            "Result Caching",
-            "Warehouse Sizing",
-            "Query Profiling"
+            "Query Profile analysis and optimization",
+            "Result cache, metadata cache, and warehouse cache",
+            "Clustering keys and automatic clustering",
+            "Search Optimization Service for point lookups",
+            "Materialized views for pre-computed results",
+            "Query history and monitoring",
+            "Warehouse sizing best practices",
+            "Spilling to local and remote storage",
+            "Query acceleration service",
+            "Resource monitors for cost control"
           ]
         },
         {
           "name": "Data Loading and Unloading",
-          "weight": 15,
+          "weight": 17,
           "topics": [
-            "COPY INTO Command",
-            "Snowpipe",
-            "External Stages",
-            "File Formats",
-            "Data Transformation",
-            "Bulk Loading"
+            "COPY INTO command for bulk loading",
+            "Internal stages (user, table, named)",
+            "External stages (S3, Azure Blob, GCS)",
+            "File formats: CSV, JSON, Avro, Parquet, ORC, XML",
+            "Snowpipe for continuous data ingestion",
+            "Auto-ingest with cloud event notifications",
+            "PUT and GET commands for file transfer",
+            "Data transformation during loading",
+            "Unloading data with COPY INTO @stage",
+            "Error handling and validation modes"
           ]
         },
         {
           "name": "Data Transformations",
-          "weight": 15,
+          "weight": 14,
           "topics": [
-            "SQL Functions",
-            "Stored Procedures",
-            "User-Defined Functions",
-            "Tasks and Streams",
-            "Data Pipelines"
+            "SQL functions: string, numeric, date/time, semi-structured",
+            "User-Defined Functions (UDFs): SQL, JavaScript, Python",
+            "User-Defined Table Functions (UDTFs)",
+            "Stored Procedures: JavaScript, Snowpark (Python, Scala, Java)",
+            "Streams for Change Data Capture (CDC)",
+            "Tasks for scheduling and automation",
+            "Task graphs and DAG orchestration",
+            "Sequences and auto-increment columns",
+            "Semi-structured data: VARIANT, OBJECT, ARRAY",
+            "FLATTEN function for nested data"
           ]
         },
         {
           "name": "Data Protection and Data Sharing",
           "weight": 10,
           "topics": [
-            "Time Travel",
-            "Fail-safe",
-            "Data Cloning",
-            "Secure Data Sharing",
-            "Data Marketplace"
+            "Time Travel: AT, BEFORE, UNDROP (1-90 days by edition)",
+            "Fail-safe: 7-day recovery by Snowflake Support",
+            "Zero-copy cloning for databases, schemas, tables",
+            "Data retention settings",
+            "Secure Data Sharing: shares, reader accounts",
+            "Data Exchange and private listings",
+            "Snowflake Marketplace",
+            "Secure views and secure UDFs",
+            "Database replication (cross-region, cross-cloud)",
+            "Data masking policies overview"
           ]
         }
       ],
@@ -82,151 +132,312 @@
         {"title": "SnowPro Core Study Guide", "url": "https://learn.snowflake.com/courses/snowpro-core-certification-preparation"},
         {"title": "Snowflake Architecture", "url": "https://docs.snowflake.com/en/user-guide/intro-key-concepts"},
         {"title": "Virtual Warehouses", "url": "https://docs.snowflake.com/en/user-guide/warehouses"},
-        {"title": "Access Control", "url": "https://docs.snowflake.com/en/user-guide/security-access-control"}
+        {"title": "Access Control Overview", "url": "https://docs.snowflake.com/en/user-guide/security-access-control"},
+        {"title": "Data Loading Overview", "url": "https://docs.snowflake.com/en/user-guide/data-load-overview"},
+        {"title": "Time Travel", "url": "https://docs.snowflake.com/en/user-guide/data-time-travel"}
       ]
     },
     "DEA-C01": {
-      "name": "SnowPro Data Engineer Certification",
+      "name": "SnowPro Advanced: Data Engineer",
       "code": "DEA-C01",
-      "description": "Validates expertise in building and maintaining data pipelines in Snowflake",
+      "level": "advanced",
+      "description": "Validates expertise in building, maintaining, and optimizing data pipelines in Snowflake",
+      "exam_details": {
+        "questions": 65,
+        "duration": "115 minutes",
+        "passing_score": "750/1000",
+        "cost": "$375 USD",
+        "prerequisites": "Active SnowPro Core Certification + 2+ years data engineering experience"
+      },
       "domains": [
         {
           "name": "Data Movement",
-          "weight": 25,
+          "weight": 28,
           "topics": [
-            "Continuous Data Loading",
-            "Snowpipe Streaming",
-            "Kafka Connector",
-            "External Tables",
-            "Data Ingestion Patterns"
+            "COPY INTO command: options, transformations, error handling",
+            "Snowpipe: auto-ingest, REST API, pipe management",
+            "Snowpipe Streaming for low-latency ingestion",
+            "Kafka Connector for Snowflake configuration",
+            "External tables for data lake integration",
+            "Internal and external stages management",
+            "File format specifications and best practices",
+            "Data ingestion patterns: batch vs streaming",
+            "Iceberg tables for open table format",
+            "Data unloading strategies and performance"
           ]
         },
         {
           "name": "Data Transformation",
           "weight": 30,
           "topics": [
-            "Streams and Tasks",
-            "Stored Procedures",
-            "User-Defined Functions",
-            "Dynamic Tables",
-            "Snowpark for Python"
-          ]
-        },
-        {
-          "name": "Data Pipeline Management",
-          "weight": 20,
-          "topics": [
-            "Task Orchestration",
-            "Error Handling",
-            "Monitoring and Alerting",
-            "Pipeline Testing",
-            "Version Control"
+            "Streams: standard, append-only, insert-only modes",
+            "Tasks: scheduling, dependencies, error handling",
+            "Task graphs (DAGs) and orchestration patterns",
+            "Dynamic Tables for declarative pipelines",
+            "Stored Procedures: JavaScript, Python, Scala, Java",
+            "User-Defined Functions (UDFs) and UDTFs",
+            "Snowpark DataFrame API for Python/Scala/Java",
+            "Semi-structured data processing (JSON, XML, Parquet)",
+            "FLATTEN and LATERAL for nested data",
+            "Merge operations and slowly changing dimensions (SCD)"
           ]
         },
         {
           "name": "Performance Optimization",
-          "weight": 15,
+          "weight": 22,
           "topics": [
-            "Query Optimization",
-            "Clustering Keys",
-            "Search Optimization",
-            "Materialized Views",
-            "Resource Monitors"
+            "Query Profile analysis and optimization strategies",
+            "Clustering keys: selection, maintenance, monitoring",
+            "Search Optimization Service configuration",
+            "Materialized Views: creation, refresh, limitations",
+            "Warehouse sizing and scaling strategies",
+            "Multi-cluster warehouse configuration",
+            "Query acceleration service",
+            "Partition pruning and micro-partition optimization",
+            "Caching strategies: result, metadata, warehouse",
+            "Resource monitors and cost management"
           ]
         },
         {
-          "name": "Security and Governance",
+          "name": "Storage and Data Protection",
           "weight": 10,
           "topics": [
-            "Data Masking",
-            "Row Access Policies",
-            "Object Tagging",
-            "Data Classification",
-            "Audit Logging"
+            "Time Travel configuration and usage",
+            "Fail-safe and data recovery",
+            "Zero-copy cloning for development and testing",
+            "Transient and temporary tables",
+            "Data retention policies",
+            "Storage costs and optimization",
+            "Database and schema organization",
+            "Table types: permanent, transient, temporary, external"
+          ]
+        },
+        {
+          "name": "Data Governance and Security",
+          "weight": 10,
+          "topics": [
+            "Dynamic Data Masking policies",
+            "Row Access Policies for row-level security",
+            "Object tagging and classification",
+            "Column-level security implementation",
+            "Access History and Query History views",
+            "Data lineage tracking",
+            "Secure views and secure UDFs",
+            "Compliance and audit logging"
           ]
         }
       ],
       "resources": [
         {"title": "Data Engineering Guide", "url": "https://docs.snowflake.com/en/user-guide/data-load-overview"},
         {"title": "Snowpipe Documentation", "url": "https://docs.snowflake.com/en/user-guide/data-load-snowpipe-intro"},
-        {"title": "Streams and Tasks", "url": "https://docs.snowflake.com/en/user-guide/streams"},
+        {"title": "Streams and Change Tracking", "url": "https://docs.snowflake.com/en/user-guide/streams"},
+        {"title": "Tasks Documentation", "url": "https://docs.snowflake.com/en/user-guide/tasks-intro"},
         {"title": "Dynamic Tables", "url": "https://docs.snowflake.com/en/user-guide/dynamic-tables-about"},
-        {"title": "Snowpark Developer Guide", "url": "https://docs.snowflake.com/en/developer-guide/snowpark/index"}
+        {"title": "Snowpark Developer Guide", "url": "https://docs.snowflake.com/en/developer-guide/snowpark/index"},
+        {"title": "Query Optimization", "url": "https://docs.snowflake.com/en/user-guide/performance-query"}
       ]
     },
     "ARA-C01": {
-      "name": "SnowPro Architect Certification",
+      "name": "SnowPro Advanced: Architect",
       "code": "ARA-C01",
-      "description": "Validates expertise in designing enterprise-grade Snowflake solutions",
+      "level": "advanced",
+      "description": "Validates expertise in designing enterprise-grade Snowflake solutions and multi-cloud architectures",
+      "exam_details": {
+        "questions": 65,
+        "duration": "115 minutes",
+        "passing_score": "750/1000",
+        "cost": "$375 USD",
+        "prerequisites": "Active SnowPro Core Certification + 2+ years architect experience"
+      },
       "domains": [
         {
           "name": "Accounts and Security",
           "weight": 25,
           "topics": [
-            "Multi-Account Architecture",
-            "Organization Management",
-            "Network Architecture",
-            "Private Connectivity",
-            "SSO and Federation"
+            "Multi-account strategy and organization management",
+            "Account parameters: account, session, object levels",
+            "RBAC hierarchy design and custom role patterns",
+            "System roles: ORGADMIN, ACCOUNTADMIN, SYSADMIN, SECURITYADMIN",
+            "Privilege management and least privilege principle",
+            "Authentication methods: SSO, MFA, OAuth, key-pair, SCIM",
+            "Network architecture: network policies, PrivateLink, VPN",
+            "Private connectivity (AWS PrivateLink, Azure Private Link, GCP Private Service Connect)",
+            "Column-level and row-level security implementation",
+            "Data governance and compliance frameworks"
           ]
         },
         {
           "name": "Snowflake Architecture",
-          "weight": 25,
+          "weight": 30,
           "topics": [
-            "Multi-Cloud Deployment",
-            "Replication and Failover",
-            "Business Continuity",
-            "Disaster Recovery",
-            "Cross-Cloud Data Sharing"
+            "Data models: Data Vault, Star Schema, Snowflake Schema, OBT",
+            "Multi-cloud deployment strategies",
+            "Database replication: cross-region and cross-cloud",
+            "Account replication and failover groups",
+            "Business continuity: RPO/RTO planning",
+            "Disaster recovery strategies and implementation",
+            "Data sharing architecture and patterns",
+            "Data Exchange and Marketplace strategy",
+            "Reader accounts setup and management",
+            "Object hierarchy impact on development lifecycle"
           ]
         },
         {
           "name": "Data Engineering",
-          "weight": 20,
+          "weight": 25,
           "topics": [
-            "Data Mesh Architecture",
-            "Data Lakehouse Patterns",
-            "Real-time Data Processing",
-            "Data Quality Frameworks",
-            "Metadata Management"
+            "Data loading/unloading architecture patterns",
+            "ETL vs ELT pipeline design",
+            "Real-time and near-real-time data integration",
+            "Data lakehouse architecture with Iceberg tables",
+            "External tables and data lake integration",
+            "Data Mesh implementation patterns",
+            "Data quality frameworks and validation",
+            "Metadata management and data cataloging",
+            "Integration with ecosystem tools (dbt, Airflow, Fivetran)",
+            "Data ingestion optimization strategies"
           ]
         },
         {
           "name": "Performance Optimization",
-          "weight": 15,
+          "weight": 20,
           "topics": [
-            "Workload Management",
-            "Cost Optimization",
-            "Query Acceleration",
-            "Auto-scaling Strategies",
-            "Performance Benchmarking"
-          ]
-        },
-        {
-          "name": "Data Sharing and Collaboration",
-          "weight": 15,
-          "topics": [
-            "Secure Data Sharing",
-            "Data Exchange",
-            "Marketplace Strategy",
-            "Reader Accounts",
-            "Cross-Region Sharing"
+            "Workload management and isolation strategies",
+            "Query optimization and troubleshooting",
+            "Warehouse sizing and auto-scaling design",
+            "Multi-cluster warehouse patterns",
+            "Clustering and Search Optimization architecture",
+            "Caching strategies at enterprise scale",
+            "Cost optimization and chargeback models",
+            "Resource monitors and budget management",
+            "Query acceleration service configuration",
+            "Performance benchmarking and monitoring"
           ]
         }
       ],
       "resources": [
-        {"title": "Snowflake Architect Guide", "url": "https://docs.snowflake.com/en/user-guide/organizations"},
+        {"title": "Organizations and Accounts", "url": "https://docs.snowflake.com/en/user-guide/organizations"},
         {"title": "Replication and Failover", "url": "https://docs.snowflake.com/en/user-guide/database-replication-intro"},
         {"title": "Private Connectivity", "url": "https://docs.snowflake.com/en/user-guide/private-connectivity"},
         {"title": "Multi-Cloud Features", "url": "https://docs.snowflake.com/en/user-guide/intro-cloud-platforms"},
-        {"title": "Data Sharing", "url": "https://docs.snowflake.com/en/user-guide/data-sharing-intro"}
+        {"title": "Data Sharing Overview", "url": "https://docs.snowflake.com/en/user-guide/data-sharing-intro"},
+        {"title": "Failover Groups", "url": "https://docs.snowflake.com/en/user-guide/failover-failback"},
+        {"title": "Security Best Practices", "url": "https://docs.snowflake.com/en/user-guide/security-overview"}
+      ]
+    },
+    "ADA-C01": {
+      "name": "SnowPro Advanced: Administrator",
+      "code": "ADA-C01",
+      "level": "advanced",
+      "description": "Validates expertise in administering and managing Snowflake accounts, security, and governance",
+      "exam_details": {
+        "questions": 65,
+        "duration": "115 minutes",
+        "passing_score": "750/1000",
+        "cost": "$375 USD",
+        "prerequisites": "Active SnowPro Core Certification + 2+ years admin experience"
+      },
+      "domains": [
+        {
+          "name": "Security, RBAC, and User Administration",
+          "weight": 32,
+          "topics": [
+            "Federated authentication and SSO (Identity Provider configuration)",
+            "Multi-Factor Authentication: enrollment, drivers/connectors, monitoring",
+            "OAuth configuration and integration",
+            "Key pair authentication and rotation policies",
+            "Network policies and IP allow/block lists",
+            "Private connectivity options (PrivateLink)",
+            "RBAC architecture and custom role design",
+            "System roles hierarchy and privilege inheritance",
+            "SCIM integration for automated user provisioning",
+            "Service accounts and API authentication",
+            "Data exfiltration prevention parameters"
+          ]
+        },
+        {
+          "name": "Account Management and Data Governance",
+          "weight": 23,
+          "topics": [
+            "Organization and account management",
+            "Account identifiers and URL formats",
+            "Tri-Secret Secure and encryption key management",
+            "Dynamic Data Masking policies implementation",
+            "Row Access Policies for row-level security",
+            "Object tagging and data classification",
+            "Tag-based masking policies",
+            "Database, schema, and object management",
+            "Stages: internal and external configuration",
+            "Streams and Tasks administration"
+          ]
+        },
+        {
+          "name": "Performance Monitoring and Tuning",
+          "weight": 23,
+          "topics": [
+            "Virtual Warehouse design and sizing strategies",
+            "Multi-cluster warehouse configuration",
+            "Query Profile interpretation and optimization",
+            "EXPLAIN plans and query analysis",
+            "Caching strategies: result, metadata, warehouse",
+            "Data clustering and micro-partition management",
+            "DML locking and concurrency management",
+            "Resource monitors configuration",
+            "Cost optimization and usage monitoring",
+            "Account Usage views for analysis"
+          ]
+        },
+        {
+          "name": "Data Sharing and Marketplace",
+          "weight": 12,
+          "topics": [
+            "Secure Data Sharing implementation",
+            "Secure views and secure UDFs",
+            "Reader accounts setup and management",
+            "Data Exchange administration",
+            "Snowflake Marketplace listings",
+            "Cross-region and cross-cloud sharing",
+            "Share consumer management",
+            "Listing monetization options"
+          ]
+        },
+        {
+          "name": "Disaster Recovery and Replication",
+          "weight": 10,
+          "topics": [
+            "Disaster recovery strategy design",
+            "Time Travel configuration and administration",
+            "Fail-safe features and recovery requests",
+            "Database replication setup and monitoring",
+            "Account replication and failover groups",
+            "Cross-region and cross-cloud replication",
+            "Replication billing and cost management",
+            "RPO/RTO planning and testing"
+          ]
+        }
+      ],
+      "resources": [
+        {"title": "Security Overview", "url": "https://docs.snowflake.com/en/user-guide/security-overview"},
+        {"title": "Access Control", "url": "https://docs.snowflake.com/en/user-guide/security-access-control"},
+        {"title": "Data Governance", "url": "https://docs.snowflake.com/en/user-guide/governance"},
+        {"title": "Dynamic Data Masking", "url": "https://docs.snowflake.com/en/user-guide/security-column-ddm-intro"},
+        {"title": "Row Access Policies", "url": "https://docs.snowflake.com/en/user-guide/security-row-intro"},
+        {"title": "Resource Monitors", "url": "https://docs.snowflake.com/en/user-guide/resource-monitors"},
+        {"title": "Account Usage", "url": "https://docs.snowflake.com/en/sql-reference/account-usage"}
       ]
     },
     "GES-C01": {
-      "name": "SnowPro Gen AI Specialty Certification",
+      "name": "SnowPro Specialty: Generative AI",
       "code": "GES-C01",
+      "level": "specialty",
       "description": "Validates expertise in building Generative AI applications using Snowflake Cortex, including LLM functions, Cortex Search, Analyst, and Document AI",
+      "exam_details": {
+        "questions": 60,
+        "duration": "90 minutes",
+        "passing_score": "750/1000",
+        "cost": "$250 USD",
+        "prerequisites": "None (SnowPro Core recommended)"
+      },
       "domains": [
         {
           "name": "GenAI Overview",
@@ -317,26 +528,32 @@
   },
   "mindmaps": {
     "COF-C02": {
-      "Snowflake Data Cloud Features & Architecture": "graph TD\n    A[Snowflake Architecture] --> B[Cloud Services Layer]\n    A --> C[Compute Layer]\n    A --> D[Storage Layer]\n    B --> E[Query Optimization]\n    B --> F[Security & Access]\n    B --> G[Metadata Management]\n    C --> H[Virtual Warehouses]\n    C --> I[Query Processing]\n    D --> J[Micro-partitions]\n    D --> K[Data Clustering]\n    H --> L[Auto-scaling]\n    H --> M[Multi-cluster]",
-      "Account Access and Security": "graph TD\n    A[Security] --> B[Authentication]\n    A --> C[Authorization]\n    A --> D[Network Security]\n    B --> E[MFA]\n    B --> F[SSO/SAML]\n    B --> G[Key-pair Auth]\n    C --> H[RBAC]\n    C --> I[DAC]\n    H --> J[System Roles]\n    H --> K[Custom Roles]\n    D --> L[Network Policies]\n    D --> M[Private Link]",
-      "Performance Concepts": "graph TD\n    A[Performance] --> B[Caching]\n    A --> C[Clustering]\n    A --> D[Optimization]\n    B --> E[Result Cache]\n    B --> F[Metadata Cache]\n    B --> G[Warehouse Cache]\n    C --> H[Natural Clustering]\n    C --> I[Clustering Keys]\n    D --> J[Query Profiling]\n    D --> K[Materialized Views]",
-      "Data Loading and Unloading": "graph TD\n    A[Data Loading] --> B[Bulk Loading]\n    A --> C[Continuous Loading]\n    A --> D[Unloading]\n    B --> E[COPY INTO]\n    B --> F[Stages]\n    C --> G[Snowpipe]\n    C --> H[Streaming]\n    F --> I[Internal Stage]\n    F --> J[External Stage]\n    D --> K[COPY INTO Location]\n    D --> L[File Formats]",
-      "Data Transformations": "graph TD\n    A[Transformations] --> B[SQL Functions]\n    A --> C[Procedural Logic]\n    A --> D[Automation]\n    B --> E[Built-in Functions]\n    B --> F[UDFs]\n    C --> G[Stored Procedures]\n    C --> H[JavaScript/Python]\n    D --> I[Tasks]\n    D --> J[Streams]\n    I --> K[Scheduling]\n    J --> L[CDC]",
-      "Data Protection and Data Sharing": "graph TD\n    A[Data Protection] --> B[Time Travel]\n    A --> C[Fail-safe]\n    A --> D[Cloning]\n    A --> E[Data Sharing]\n    B --> F[UNDROP]\n    B --> G[AT/BEFORE]\n    D --> H[Zero-copy Clone]\n    E --> I[Direct Share]\n    E --> J[Data Exchange]\n    E --> K[Marketplace]"
+      "Snowflake AI Data Cloud Features & Architecture": "graph TD\n    A[Snowflake Architecture] --> B[Cloud Services Layer]\n    A --> C[Compute Layer]\n    A --> D[Storage Layer]\n    B --> E[Query Optimization]\n    B --> F[Security & Metadata]\n    B --> G[Transaction Management]\n    C --> H[Virtual Warehouses]\n    C --> I[Query Processing]\n    H --> J[T-shirt Sizing]\n    H --> K[Multi-cluster]\n    H --> L[Auto-suspend/Resume]\n    D --> M[Micro-partitions]\n    D --> N[Columnar Storage]\n    D --> O[Compression]",
+      "Account Access and Security": "graph TD\n    A[Security] --> B[Authentication]\n    A --> C[Authorization]\n    A --> D[Network Security]\n    B --> E[Password + MFA]\n    B --> F[SSO/SAML 2.0]\n    B --> G[Key-pair Auth]\n    B --> H[OAuth]\n    C --> I[RBAC Model]\n    I --> J[System Roles]\n    I --> K[Custom Roles]\n    J --> L[ACCOUNTADMIN]\n    J --> M[SYSADMIN]\n    J --> N[SECURITYADMIN]\n    D --> O[Network Policies]\n    D --> P[Private Link]",
+      "Performance Concepts": "graph TD\n    A[Performance] --> B[Caching]\n    A --> C[Optimization]\n    A --> D[Monitoring]\n    B --> E[Result Cache]\n    B --> F[Metadata Cache]\n    B --> G[Warehouse Cache]\n    C --> H[Clustering Keys]\n    C --> I[Search Optimization]\n    C --> J[Materialized Views]\n    D --> K[Query Profile]\n    D --> L[Query History]\n    H --> M[Auto-clustering]\n    I --> N[Point Lookups]",
+      "Data Loading and Unloading": "graph TD\n    A[Data Movement] --> B[Bulk Loading]\n    A --> C[Continuous Loading]\n    A --> D[Unloading]\n    B --> E[COPY INTO]\n    B --> F[Stages]\n    F --> G[Internal Stage]\n    F --> H[External Stage]\n    C --> I[Snowpipe]\n    I --> J[Auto-ingest]\n    I --> K[REST API]\n    D --> L[COPY INTO @stage]\n    E --> M[File Formats]\n    M --> N[CSV/JSON/Parquet]",
+      "Data Transformations": "graph TD\n    A[Transformations] --> B[SQL Functions]\n    A --> C[Procedural Objects]\n    A --> D[Automation]\n    B --> E[Built-in Functions]\n    B --> F[Semi-structured]\n    C --> G[UDFs]\n    C --> H[Stored Procedures]\n    G --> I[SQL/JS/Python]\n    D --> J[Streams]\n    D --> K[Tasks]\n    J --> L[CDC Tracking]\n    K --> M[Scheduling]\n    K --> N[DAGs]",
+      "Data Protection and Data Sharing": "graph TD\n    A[Data Protection] --> B[Time Travel]\n    A --> C[Fail-safe]\n    A --> D[Cloning]\n    A --> E[Data Sharing]\n    B --> F[UNDROP]\n    B --> G[AT/BEFORE]\n    B --> H[1-90 days]\n    C --> I[7 days]\n    D --> J[Zero-copy]\n    E --> K[Secure Shares]\n    E --> L[Reader Accounts]\n    E --> M[Marketplace]"
     },
     "DEA-C01": {
-      "Data Movement": "graph TD\n    A[Data Movement] --> B[Batch Loading]\n    A --> C[Streaming]\n    A --> D[External Sources]\n    B --> E[COPY INTO]\n    B --> F[Snowpipe]\n    C --> G[Snowpipe Streaming]\n    C --> H[Kafka Connector]\n    D --> I[External Tables]\n    D --> J[External Stages]\n    F --> K[Auto-ingest]\n    G --> L[Low Latency]",
-      "Data Transformation": "graph TD\n    A[Transformation] --> B[Change Data Capture]\n    A --> C[Procedural Logic]\n    A --> D[Dynamic Tables]\n    B --> E[Streams]\n    B --> F[Append/Insert Only]\n    C --> G[Stored Procedures]\n    C --> H[UDFs/UDTFs]\n    D --> I[Declarative Pipelines]\n    D --> J[Auto Refresh]\n    H --> K[Snowpark]\n    K --> L[Python/Scala/Java]",
-      "Data Pipeline Management": "graph TD\n    A[Pipeline Management] --> B[Orchestration]\n    A --> C[Monitoring]\n    A --> D[Error Handling]\n    B --> E[Tasks]\n    B --> F[DAGs]\n    C --> G[TASK_HISTORY]\n    C --> H[Alerts]\n    D --> I[Try/Catch]\n    D --> J[Retry Logic]\n    E --> K[Scheduling]\n    F --> L[Dependencies]",
-      "Performance Optimization": "graph TD\n    A[Performance] --> B[Query Optimization]\n    A --> C[Storage Optimization]\n    A --> D[Resource Management]\n    B --> E[Clustering]\n    B --> F[Search Optimization]\n    C --> G[Partitioning]\n    C --> H[Compression]\n    D --> I[Resource Monitors]\n    D --> J[Warehouse Sizing]\n    F --> K[Point Lookups]\n    I --> L[Credit Quotas]",
-      "Security and Governance": "graph TD\n    A[Governance] --> B[Data Protection]\n    A --> C[Access Control]\n    A --> D[Auditing]\n    B --> E[Dynamic Masking]\n    B --> F[Row Access Policies]\n    C --> G[Object Tags]\n    C --> H[Data Classification]\n    D --> I[Access History]\n    D --> J[Query History]\n    E --> K[Masking Policies]\n    G --> L[Tag-based Policies]"
+      "Data Movement": "graph TD\n    A[Data Movement] --> B[Batch Loading]\n    A --> C[Streaming]\n    A --> D[External Sources]\n    B --> E[COPY INTO]\n    B --> F[Snowpipe]\n    F --> G[Auto-ingest]\n    F --> H[REST API]\n    C --> I[Snowpipe Streaming]\n    C --> J[Kafka Connector]\n    D --> K[External Tables]\n    D --> L[Iceberg Tables]\n    I --> M[Low Latency]\n    K --> N[Data Lake]",
+      "Data Transformation": "graph TD\n    A[Transformation] --> B[CDC]\n    A --> C[Procedural]\n    A --> D[Declarative]\n    B --> E[Streams]\n    E --> F[Standard]\n    E --> G[Append-only]\n    E --> H[Insert-only]\n    C --> I[Stored Procedures]\n    C --> J[UDFs/UDTFs]\n    C --> K[Snowpark]\n    K --> L[Python/Scala/Java]\n    D --> M[Dynamic Tables]\n    M --> N[Auto Refresh]",
+      "Performance Optimization": "graph TD\n    A[Performance] --> B[Query Tuning]\n    A --> C[Storage Tuning]\n    A --> D[Resource Mgmt]\n    B --> E[Query Profile]\n    B --> F[EXPLAIN Plan]\n    C --> G[Clustering Keys]\n    C --> H[Search Optimization]\n    C --> I[Materialized Views]\n    D --> J[Warehouse Sizing]\n    D --> K[Multi-cluster]\n    D --> L[Resource Monitors]\n    G --> M[Partition Pruning]",
+      "Storage and Data Protection": "graph TD\n    A[Storage] --> B[Table Types]\n    A --> C[Data Protection]\n    A --> D[Optimization]\n    B --> E[Permanent]\n    B --> F[Transient]\n    B --> G[Temporary]\n    B --> H[External]\n    C --> I[Time Travel]\n    C --> J[Fail-safe]\n    C --> K[Cloning]\n    D --> L[Retention]\n    D --> M[Cost Analysis]",
+      "Data Governance and Security": "graph TD\n    A[Governance] --> B[Column Security]\n    A --> C[Row Security]\n    A --> D[Auditing]\n    B --> E[Data Masking]\n    E --> F[Dynamic Masking]\n    C --> G[Row Access Policies]\n    A --> H[Tagging]\n    H --> I[Object Tags]\n    H --> J[Classification]\n    D --> K[Access History]\n    D --> L[Query History]"
     },
     "ARA-C01": {
-      "Accounts and Security": "graph TD\n    A[Account Architecture] --> B[Organizations]\n    A --> C[Network Design]\n    A --> D[Identity]\n    B --> E[Account Management]\n    B --> F[Usage Monitoring]\n    C --> G[Private Link]\n    C --> H[Network Policies]\n    D --> I[SSO/SCIM]\n    D --> J[Federation]\n    G --> K[AWS/Azure/GCP]\n    I --> L[Identity Providers]",
-      "Snowflake Architecture": "graph TD\n    A[Multi-Cloud] --> B[Replication]\n    A --> C[Failover]\n    A --> D[Business Continuity]\n    B --> E[Database Replication]\n    B --> F[Account Replication]\n    C --> G[Primary/Secondary]\n    C --> H[Promotion]\n    D --> I[RPO/RTO]\n    D --> J[DR Strategy]\n    E --> K[Cross-Region]\n    E --> L[Cross-Cloud]",
-      "Data Engineering": "graph TD\n    A[Data Architecture] --> B[Data Mesh]\n    A --> C[Lakehouse]\n    A --> D[Quality]\n    B --> E[Domain Ownership]\n    B --> F[Data Products]\n    C --> G[Iceberg Tables]\n    C --> H[External Tables]\n    D --> I[Data Quality Rules]\n    D --> J[Observability]\n    F --> K[Data Contracts]\n    G --> L[Open Formats]",
-      "Performance Optimization": "graph TD\n    A[Optimization] --> B[Workload Management]\n    A --> C[Cost Control]\n    A --> D[Acceleration]\n    B --> E[Multi-cluster]\n    B --> F[Query Queuing]\n    C --> G[Resource Monitors]\n    C --> H[Usage Attribution]\n    D --> I[Query Acceleration]\n    D --> J[Caching Strategy]\n    E --> K[Auto-scale]\n    G --> L[Budgets]",
-      "Data Sharing and Collaboration": "graph TD\n    A[Data Sharing] --> B[Direct Sharing]\n    A --> C[Data Exchange]\n    A --> D[Marketplace]\n    B --> E[Secure Shares]\n    B --> F[Reader Accounts]\n    C --> G[Private Exchange]\n    C --> H[Cross-Region]\n    D --> I[Listings]\n    D --> J[Monetization]\n    E --> K[Live Data]\n    H --> L[Auto-fulfillment]"
+      "Accounts and Security": "graph TD\n    A[Account Architecture] --> B[Organizations]\n    A --> C[Security]\n    A --> D[Network]\n    B --> E[Multi-Account Strategy]\n    B --> F[ORGADMIN Role]\n    C --> G[RBAC Design]\n    C --> H[Privilege Patterns]\n    C --> I[Authentication]\n    I --> J[SSO/MFA/OAuth]\n    I --> K[SCIM]\n    D --> L[PrivateLink]\n    D --> M[Network Policies]\n    G --> N[Role Hierarchy]",
+      "Snowflake Architecture": "graph TD\n    A[Architecture] --> B[Data Models]\n    A --> C[Multi-Cloud]\n    A --> D[DR/BC]\n    B --> E[Data Vault]\n    B --> F[Star Schema]\n    B --> G[Snowflake Schema]\n    C --> H[Replication]\n    H --> I[Database Replication]\n    H --> J[Account Replication]\n    D --> K[Failover Groups]\n    D --> L[RPO/RTO]\n    A --> M[Data Sharing]\n    M --> N[Marketplace]",
+      "Data Engineering": "graph TD\n    A[Data Engineering] --> B[Architecture Patterns]\n    A --> C[Integration]\n    A --> D[Quality]\n    B --> E[ETL vs ELT]\n    B --> F[Data Mesh]\n    B --> G[Lakehouse]\n    G --> H[Iceberg Tables]\n    G --> I[External Tables]\n    C --> J[Ecosystem Tools]\n    J --> K[dbt/Airflow]\n    D --> L[Validation]\n    D --> M[Cataloging]",
+      "Performance Optimization": "graph TD\n    A[Optimization] --> B[Workload Mgmt]\n    A --> C[Cost Control]\n    A --> D[Scaling]\n    B --> E[Isolation]\n    B --> F[Query Queuing]\n    C --> G[Resource Monitors]\n    C --> H[Chargeback]\n    D --> I[Multi-cluster]\n    D --> J[Auto-scaling]\n    A --> K[Acceleration]\n    K --> L[Query Acceleration]\n    K --> M[Search Optimization]"
+    },
+    "ADA-C01": {
+      "Security, RBAC, and User Administration": "graph TD\n    A[Security Admin] --> B[Authentication]\n    A --> C[Authorization]\n    A --> D[Users]\n    B --> E[SSO/SAML]\n    B --> F[MFA]\n    B --> G[OAuth]\n    B --> H[Key-pair]\n    C --> I[RBAC Design]\n    I --> J[System Roles]\n    I --> K[Custom Roles]\n    D --> L[SCIM]\n    D --> M[Service Accounts]\n    A --> N[Network]\n    N --> O[Policies]\n    N --> P[PrivateLink]",
+      "Account Management and Data Governance": "graph TD\n    A[Account Mgmt] --> B[Organization]\n    A --> C[Encryption]\n    A --> D[Governance]\n    B --> E[Multi-Account]\n    B --> F[Account IDs]\n    C --> G[Tri-Secret]\n    C --> H[Key Management]\n    D --> I[Data Masking]\n    D --> J[Row Access]\n    D --> K[Tagging]\n    K --> L[Classification]\n    I --> M[Masking Policies]",
+      "Performance Monitoring and Tuning": "graph TD\n    A[Performance] --> B[Warehouses]\n    A --> C[Query Analysis]\n    A --> D[Cost Mgmt]\n    B --> E[Sizing]\n    B --> F[Multi-cluster]\n    B --> G[Scaling Policies]\n    C --> H[Query Profile]\n    C --> I[EXPLAIN]\n    C --> J[History Views]\n    D --> K[Resource Monitors]\n    D --> L[Account Usage]\n    A --> M[Optimization]\n    M --> N[Caching]\n    M --> O[Clustering]",
+      "Data Sharing and Marketplace": "graph TD\n    A[Data Sharing] --> B[Secure Shares]\n    A --> C[Data Exchange]\n    A --> D[Marketplace]\n    B --> E[Provider Setup]\n    B --> F[Consumer Access]\n    B --> G[Reader Accounts]\n    C --> H[Private Exchange]\n    C --> I[Cross-region]\n    D --> J[Listings]\n    D --> K[Monetization]\n    B --> L[Secure Views]",
+      "Disaster Recovery and Replication": "graph TD\n    A[DR Strategy] --> B[Data Protection]\n    A --> C[Replication]\n    A --> D[Planning]\n    B --> E[Time Travel]\n    B --> F[Fail-safe]\n    C --> G[Database Replication]\n    C --> H[Account Replication]\n    C --> I[Failover Groups]\n    D --> J[RPO Planning]\n    D --> K[RTO Planning]\n    G --> L[Cross-region]\n    G --> M[Cross-cloud]"
     },
     "GES-C01": {
       "GenAI Overview": "graph TD\n    A[Snowflake GenAI] --> B[Cortex Services]\n    A --> C[Interfaces]\n    A --> D[BYOM]\n    B --> E[LLM Functions]\n    B --> F[Cortex Search]\n    B --> G[Cortex Analyst]\n    B --> H[Cortex Agent]\n    C --> I[LLM Playground]\n    C --> J[AI SQL Functions]\n    C --> K[REST API]\n    D --> L[Model Registry]\n    D --> M[SPCS]\n    E --> N[Fine Tuning]\n    F --> O[RAG Use Cases]\n    G --> P[Text-to-SQL]",
